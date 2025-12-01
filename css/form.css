@@ -1,0 +1,66 @@
+/* Contact Form */
+.contact-form {
+	margin-top: 3rem;
+	width: 100%;
+	max-width: 39rem;
+	display: grid;
+	gap: 2rem;
+}
+
+.form-group {
+	position: relative;
+}
+
+.contact-form input,
+.contact-form textarea {
+	width: 100%;
+	background: transparent;
+	border: 0;
+	border-bottom: 1px solid var(--color-border);
+	padding: 0.5rem 0;
+	font-family: inherit;
+	font-size: var(--font-size-body-mobile);
+	color: var(--color-text);
+	border-radius: 0;
+	outline: none;
+	transition: border-color 0.3s ease, opacity 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+	color: var(--color-text);
+	opacity: 0.5;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+	border-bottom-color: var(--color-link);
+}
+
+.contact-form textarea {
+	resize: none;
+	min-height: 2.5rem;
+}
+
+.form-submit {
+	justify-self: start;
+	padding: 1rem 2rem;
+	border: 1px solid var(--color-border);
+	color: var(--color-text);
+	transition: all 0.3s ease;
+	margin-top: 1rem;
+	background: transparent;
+}
+
+.form-submit:hover {
+	background: var(--color-text);
+	color: var(--color-bg);
+	border-color: var(--color-text);
+}
+
+@media screen and (min-width: 768px) {
+	.contact-form input,
+	.contact-form textarea {
+		font-size: var(--font-size-body);
+	}
+}
