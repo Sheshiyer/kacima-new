@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <path d="M256 448 v-64 m0 -32 v-32 m0 -32 v-32 m0 -32 v-32" stroke="#D4B08C" stroke-width="12"/>
-  <path d="M256 256 c64 0 96 -32 128 -64 c-32 0 -64 0 -128 0 c-64 0 -96 0 -128 0 c32 32 64 64 128 64z" fill="none" stroke="#D4B08C" stroke-width="12"/>
-  <path d="M256 320 c64 0 96 -32 128 -64 c-32 0 -64 0 -128 0 c-64 0 -96 0 -128 0 c32 32 64 64 128 64z" fill="none" stroke="#D4B08C" stroke-width="12"/>
-  <path d="M256 384 c64 0 96 -32 128 -64 c-32 0 -64 0 -128 0 c-64 0 -96 0 -128 0 c32 32 64 64 128 64z" fill="none" stroke="#D4B08C" stroke-width="12"/>
-</svg>

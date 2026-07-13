@@ -25,5 +25,17 @@
 - After: Title `Kācima — Sanctuary on Kanakapura Road`, description aligned with hero subheadline, keywords from SEO notes
 
 ## Color Scheme
-- Before (`css/base.css:7-18`): Near-black backgrounds and white links
-- After: Olive/Clay palette per `docs/style-guide.md`
+- **Before** (`css/base.css:7-18`): 
+  - Single dark theme: Near-black backgrounds (`#111`) and white links.
+  - High contrast but monochromatic.
+
+- **After** (`docs/style-guide.md`):
+  - **Multi-theme System:** Logo-aligned palette with 5 distinct section themes.
+  - **Master Palette:** Olive Earth (`#5A5A32`), Clay Peach (`#D4B08C`), Soft Cream (`#F5F2EB`), Soil Brown (`#3A2F25`), Deep Emerald (`#1F3F36`), Sage (`#7B8D6A`).
+  - **Semantic Tokens:** Abstracted usage (e.g., `--color-bg`, `--color-text`) allowing contextual overrides.
+  - **Themes Implemented:**
+    - `.theme-olive`: The grounding default (Header, Footer, Community).
+    - `.theme-brown`: Deep, rich context for "Rawness" and "Unspoken" grids.
+    - `.theme-emerald`: Cool, shadowed forest tones for "Vision".
+    - `.theme-sage`: Soft, muted green for "Visit" and "Near Kanakapura Road".
+    - `.theme-cream`: Light, airy contrast for "Practices" and "Explorations".
