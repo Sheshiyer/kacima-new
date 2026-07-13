@@ -310,6 +310,16 @@ a:focus-visible {
 	padding-bottom: 15vh;
 }
 
+.content--chapter .type-tiny {
+	font-size: 1em;
+	margin-bottom: 0.75em;
+}
+
+.content--chapter .content__text {
+	font-size: clamp(1.35em, 2.8vw, 1.85em);
+	line-height: 1.5;
+}
+
 .content--full {
 	display: grid;
 	height: 100vh;
