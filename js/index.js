@@ -1,5 +1,7 @@
 import { preloadImages } from './utils.js';
 
+gsap.registerPlugin(ScrollTrigger);
+
 // Function to animate the header (frame)
 const animateFrame = () => {
   const frame = document.querySelector('.frame'); 
@@ -447,6 +449,33 @@ const animateNinthGrid = () => {
   });
 };
 
+// Function to animate text sections (narrative scroll reveals)
+const animateTextReveals = () => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sections = document.querySelectorAll('[data-reveal]');
+
+  if (prefersReducedMotion) return;
+
+  sections.forEach(section => {
+    const heading = section.querySelector('.type-tiny');
+    const sentences = section.querySelectorAll('.sentence');
+    const targets = heading ? [heading, ...sentences] : [...sentences];
+
+    gsap.from(targets, {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power3.out',
+      stagger: 0.15,
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 75%',
+        toggleActions: 'play none none none'
+      }
+    });
+  });
+};
+
 // Main initialization function
 const init = () => {
   // Animate the header (frame)
@@ -463,6 +492,9 @@ const init = () => {
   animateSeventhGrid();
   animateEighthGrid();
   animateNinthGrid();
+
+  // Animate text sections as narrative chapter reveals
+  animateTextReveals();
 };
 // Preload images and initialize animations
 preloadImages('.grid__img').then(() => {
