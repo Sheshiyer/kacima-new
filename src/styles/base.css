@@ -1,0 +1,111 @@
+:root {
+  --olive: #5a5a32;
+  --clay: #d4b08c;
+  --cream: #f5f2eb;
+  --soil: #3a2f25;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--soil);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* texture overlay removed for structured approach */
+
+main {
+  display: block;
+}
+
+section {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 4rem 1rem;
+}
+
+#threshold { background: var(--olive); color: var(--cream); }
+#visit-connect { background: var(--clay); }
+
+form {
+  width: 100%;
+  max-width: 480px;
+  display: grid;
+  gap: 0.75rem;
+}
+
+input, textarea, button {
+  font: inherit;
+}
+
+input, textarea {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--soil);
+  background: #fff8f1;
+}
+
+button {
+  padding: 0.7rem 1rem;
+  border: none;
+  background: var(--olive);
+  color: var(--cream);
+}
+
+h1 {
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.section { max-width: 960px; width: 100%; display: grid; gap: 1rem; place-items: center; text-align: center; opacity: 0; transform: translateY(24px); transition: opacity 600ms ease, transform 600ms ease; }
+.section.active { opacity: 1; transform: translateY(0); }
+.section.inactive { opacity: 0.5; transform: translateY(32px); }
+.section-header { display: grid; gap: 0.4rem; }
+.section-body { display: grid; gap: 0.8rem; max-width: 720px; }
+.section-media { width: 100%; max-width: 960px; margin: 0 auto; overflow: hidden; }
+.section-media img { display: block; width: 100%; height: auto; max-height: 60vh; object-fit: cover; }
+.tagline { color: var(--olive); }
+
+/* emblem/motif styles removed */
+
+/* unfold removed */
+
+/* dissolve removed */
+
+.offerings-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(160px, 1fr)); gap: 0.75rem; }
+.offerings-list li { padding: 0.6rem; border: 1px solid var(--soil); background: #fff8f1; transition: transform 400ms ease, opacity 400ms ease; }
+.section.active .offerings-list li { opacity: 1; transform: translateY(0); }
+.section.inactive .offerings-list li { opacity: 0.8; transform: translateY(6px); }
+
+.journey-sequence { display: grid; gap: 0.5rem; width: 100%; max-width: 640px; counter-reset: stage; }
+.journey-sequence li { padding: 0.5rem; background: #f3efe6; border: 1px solid var(--soil); opacity: 0.85; transition: opacity 400ms ease, transform 400ms ease; }
+.section.active .journey-sequence li { opacity: 1; transform: translateY(0); }
+.section.inactive .journey-sequence li { opacity: 0.7; transform: translateY(6px); }
+
+/* parallax layers removed */
+
+#visit-connect form { border: 2px solid var(--soil); }
+#visit-connect.active form { animation: frame 2s ease forwards; }
+
+#form-status { padding: 0.5rem; color: var(--soil); background: #f1e5da; }
+#form-status[data-state="error"] { background: #e9d3c3; }
+
+/* decorative frame removed */
+
+@keyframes frame { 0% { box-shadow: inset 0 0 0 0 var(--soil) } 100% { box-shadow: inset 0 0 0 6px var(--soil) } }
+/* kept frame animation for form */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.001ms;
+    scroll-behavior: auto;
+  }
+}
+
+.reduced-motion .section { transition: none; }

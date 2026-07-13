@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kācima</title>
+    <link rel="stylesheet" href="/src/styles/base.css" />
+  </head>
+  <body>
+    <main id="app">
+      <section id="threshold" data-scene="1"></section>
+      <section id="tree-name" data-scene="2"></section>
+      <section id="land-sanctuary" data-scene="3"></section>
+      <section id="practices-offerings" data-scene="4"></section>
+      <section id="day-at-kacima" data-scene="5"></section>
+      <section id="community-gatherings" data-scene="6"></section>
+      <section id="visit-connect" data-scene="7">
+        <form id="contact-form" novalidate>
+          <input id="name" name="name" type="text" placeholder="Name" />
+          <input id="email" name="email" type="email" placeholder="Email" />
+          <textarea id="message" name="message" placeholder="Message"></textarea>
+          <button type="submit">Send</button>
+          <div id="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

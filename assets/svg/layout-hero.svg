@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#5A5A32"/>
+  <rect x="80" y="80" width="1440" height="740" rx="24" fill="none" stroke="#D4B08C" stroke-width="6"/>
+  <g transform="translate(800,300)">
+    <path d="M0 200 q80 -160 160 0 q-80 -80 -160 0 q-80 -80 -160 0 q80 -160 160 0" fill="none" stroke="#D4B08C" stroke-width="4"/>
+  </g>
+  <text x="800" y="420" text-anchor="middle" fill="#D4B08C" font-family="Georgia, Times, serif" font-size="72">KĀCIMA</text>
+  <text x="800" y="480" text-anchor="middle" fill="#D4B08C" font-family="system-ui,-apple-system,Segoe UI,Roboto" font-size="28">A space to experience—elements and oneness.</text>
+</svg>
