@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <rect width="800" height="1000" fill="#F5F2EB"/>
+  <rect x="48" y="48" width="704" height="904" rx="16" fill="none" stroke="#3A2F25" stroke-width="4"/>
+  <path d="M80 240 q80 -120 160 0" fill="none" stroke="#C0A47A" stroke-width="4"/>
+  <path d="M720 240 q-80 -120 -160 0" fill="none" stroke="#C0A47A" stroke-width="4"/>
+  <text x="400" y="340" text-anchor="middle" fill="#3A2F25" font-family="Georgia, Times, serif" font-size="44">Practice</text>
+  <text x="400" y="392" text-anchor="middle" fill="#3A2F25" font-family="system-ui,-apple-system,Segoe UI,Roboto" font-size="20">Ritual scene description and cues</text>
+  <path d="M160 640 q120 -96 240 0 q120 96 240 0" fill="none" stroke="#B28B5A" stroke-width="6"/>
+</svg>
