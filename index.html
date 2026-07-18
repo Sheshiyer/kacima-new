@@ -5,8 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- HTML Meta Tags -->
 		<title>Kācima — Sanctuary on Kanakapura Road</title>
-		<meta name="description" content="Escape the city to Kācima. A quiet sanctuary for sound healing, yoga, and earthing on Kanakapura Road.">
-		<meta name="keywords" content="Kācima, sanctuary, sound healing, Kanakapura Road, earthing, residencies, meditation, yoga" />
+		<meta name="description" content="A private nature retreat near Bangalore for rest, reflection, slow movement, healing, and meaningful community. Up to 10 guests.">
+		<meta name="keywords" content="Kācima, private retreat, Bangalore, Kanakapura Road, sound healing, yoga, meditation, wellness retreat, nature immersion, farm stay" />
 		<meta name="author" content="Kācima" />
 		<meta name="theme-color" content="#5A5A32">
 		<link rel="canonical" href="https://kacima.com/">
@@ -17,7 +17,7 @@
 
 		<!-- Open Graph -->
 		<meta property="og:title" content="Kācima — Sanctuary on Kanakapura Road">
-		<meta property="og:description" content="Escape the city to Kācima. A quiet sanctuary for sound healing, yoga, and earthing on Kanakapura Road.">
+		<meta property="og:description" content="A private nature retreat near Bangalore for rest, reflection, slow movement, healing, and meaningful community. Up to 10 guests.">
 		<meta property="og:type" content="website">
 		<meta property="og:url" content="https://kacima.com/">
 		<meta property="og:image" content="https://kacima.com/img/og-image.png">
@@ -28,7 +28,7 @@
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name="twitter:title" content="Kācima — Sanctuary on Kanakapura Road">
-		<meta name="twitter:description" content="Escape the city to Kācima. A quiet sanctuary for sound healing, yoga, and earthing on Kanakapura Road.">
+		<meta name="twitter:description" content="A private nature retreat near Bangalore for rest, reflection, slow movement, healing, and meaningful community. Up to 10 guests.">
 		<meta name="twitter:image" content="https://kacima.com/img/og-image.png">
 		<link rel="stylesheet" href="https://use.typekit.net/tas3jji.css">
 		<link rel="stylesheet" type="text/css" href="css/base.css" />
@@ -38,21 +38,81 @@
 	<body class="loading">
 		<main>
 			<div class="noise"></div>
-			<header class="frame">
-				<h1 class="frame__title"><img src="img/logo-white.png" alt="Kācima Logo"></h1>
-				<div class="frame__subline type-tiny">
-					<span>Sanctuary on Kanakapura Road</span> 
-					<nav class="frame__links flex-line">
-						<a href="#about">About</a>
-						<a href="#offerings">Offerings</a>
-						<a href="#visit">Visit</a>
-					</nav>
+			<!-- Custom Header -->
+			<header class="k-header" id="main-header">
+				<div class="k-header__logo">
+					<img src="img/logo-white.png" alt="Kācima">
+					<span class="k-header__brand">Kācima</span>
 				</div>
-				<nav class="frame__tags flex-line type-tiny">
+				<nav class="k-header__nav">
+					<ul class="k-header__nav-links">
+						<li><a href="#about">About</a></li>
+						<li><a href="#offerings">Offerings</a></li>
+						<li><a href="#stay">Stay</a></li>
+						<li><a href="#pricing">Pricing</a></li>
+						<li><a href="#community">Community</a></li>
+						<li><a href="#visit">Visit</a></li>
+					</ul>
+				</nav>
+				<div class="k-header__cta">
+					<a href="#contact" class="k-header__cta-btn">Book Your Stay</a>
+				</div>
+				<button class="k-header__menu-btn" id="menu-toggle" aria-label="Toggle menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+			</header>
+
+			<!-- Mobile Menu -->
+			<div class="k-header__mobile-overlay" id="mobile-overlay"></div>
+			<nav class="k-header__mobile-menu" id="mobile-menu">
+				<ul class="k-header__mobile-links">
+					<li><a href="#about">About</a></li>
+					<li><a href="#offerings">Offerings</a></li>
+					<li><a href="#stay">Stay</a></li>
+					<li><a href="#pricing">Pricing</a></li>
+					<li><a href="#community">Community</a></li>
+					<li><a href="#visit">Visit</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+				<a href="#contact" class="k-header__mobile-cta">Book Your Stay</a>
+				<div class="k-header__mobile-contact">
+					<p>Get in touch</p>
+					<a href="mailto:hello@kacima.com">hello@kacima.com</a>
+				</div>
+			</nav>
+
+			<!-- Hero Section: keeps the original .frame animation contract intact -->
+			<section class="frame k-frame-hero" aria-label="Kācima hero">
+				<h1 class="frame__title frame__title--masked">
+					<svg class="k-frame-hero__mark" viewBox="0 0 1080 1080" aria-hidden="true" focusable="false">
+						<defs>
+							<mask id="kacima-mark-mask" maskUnits="userSpaceOnUse">
+								<image href="img/logo-alpha-mask.png" width="1080" height="1080" preserveAspectRatio="xMidYMid meet"></image>
+							</mask>
+							<linearGradient id="kacima-mark-warmth" x1="0" y1="0" x2="1" y2="1">
+								<stop offset="0" stop-color="#f5f2eb"></stop>
+								<stop offset="1" stop-color="#c0a47a"></stop>
+							</linearGradient>
+						</defs>
+						<image href="img/42.webp" x="-230" y="0" width="1540" height="1080" preserveAspectRatio="xMidYMid slice" mask="url(#kacima-mark-mask)"></image>
+						<rect width="1080" height="1080" fill="url(#kacima-mark-warmth)" opacity="0.7" mask="url(#kacima-mark-mask)"></rect>
+					</svg>
+					<span class="k-visually-hidden">Kācima</span>
+				</h1>
+				<div class="frame__subline k-frame-hero__copy">
+					<p class="k-frame-hero__eyebrow">Sanctuary on Kanakapura Road</p>
+					<p class="k-frame-hero__line">A Pause Between Earth and Sky</p>
+					<a href="#visit" class="k-frame-hero__cta">Enter the Grove</a>
+				</div>
+				<nav class="frame__tags flex-line type-tiny" aria-label="Hero values">
 					<span>#Sanctuary</span>
 					<span>#Stillness</span>
+					<span>#NatureRetreat</span>
 				</nav>
-			</header>
+			</section>
+
 			<section class="content content--marquee" aria-label="Scrolling values">
 				<div class="marquee">
 					<div class="marquee__track" aria-hidden="true">
@@ -170,7 +230,8 @@
 				</div>
 			</section>
 	<section class="content content--padded content--chapter theme-cream" id="offerings" data-reveal>
-		<h2 class="type-tiny">Practices at Kācima</h2>
+		<h2 class="k-section-title">Practices at Kācima</h2>
+		<p class="k-section-subtitle">Ways we hold space for rest, renewal, and mindful movement</p>
 		<div class="k-glow-grid">
 			<article class="k-glow-card" style="--card-gradient: linear-gradient(137deg, var(--color-olive-earth), var(--color-sage))">
 				<div class="k-glow-card__glow" aria-hidden="true"></div>
@@ -205,6 +266,18 @@
 					<div>
 						<h3 class="k-glow-card__title">Breathwork</h3>
 						<p class="k-glow-card__desc">Conscious breathing to regulate and restore.</p>
+					</div>
+				</div>
+			</article>
+			<article class="k-glow-card" style="--card-gradient: linear-gradient(137deg, var(--color-sage), var(--color-deep-emerald))">
+				<div class="k-glow-card__glow" aria-hidden="true"></div>
+				<div class="k-glow-card__inner">
+					<div class="k-glow-card__icon" aria-hidden="true">
+						<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+					</div>
+					<div>
+						<h3 class="k-glow-card__title">Vipassana</h3>
+						<p class="k-glow-card__desc">Insight meditation for clarity and presence.</p>
 					</div>
 				</div>
 			</article>
@@ -265,6 +338,30 @@
 					<div>
 						<h3 class="k-glow-card__title">Creative Circles</h3>
 						<p class="k-glow-card__desc">Art, music, and shared expression.</p>
+					</div>
+				</div>
+			</article>
+			<article class="k-glow-card" style="--card-gradient: linear-gradient(137deg, var(--color-muted-teal), var(--color-deep-emerald))">
+				<div class="k-glow-card__glow" aria-hidden="true"></div>
+				<div class="k-glow-card__inner">
+					<div class="k-glow-card__icon" aria-hidden="true">
+						<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6"/><path d="M12 22a7 7 0 0 0 7-7c0-3-2-6-7-6s-7 3-7 6a7 7 0 0 0 7 7z"/><path d="M12 8v4"/><path d="M10 10h4"/></svg>
+					</div>
+					<div>
+						<h3 class="k-glow-card__title">Ice Bath</h3>
+						<p class="k-glow-card__desc">Cold immersion for resilience and renewal.</p>
+					</div>
+				</div>
+			</article>
+			<article class="k-glow-card" style="--card-gradient: linear-gradient(137deg, var(--color-terracotta), var(--color-olive-earth))">
+				<div class="k-glow-card__glow" aria-hidden="true"></div>
+				<div class="k-glow-card__inner">
+					<div class="k-glow-card__icon" aria-hidden="true">
+						<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M8 8c0-4 8-4 8 0s8 4 8 0"/><circle cx="12" cy="12" r="2"/></svg>
+					</div>
+					<div>
+						<h3 class="k-glow-card__title">Steam</h3>
+						<p class="k-glow-card__desc">Herbal steam for purification and ease.</p>
 					</div>
 				</div>
 			</article>
@@ -526,43 +623,45 @@
 				</div>
 			</section>
 	<section class="content content--padded content--chapter theme-sage" id="pricing" data-reveal>
-			<h2 class="type-tiny">Stay &amp; Pricing</h2>
+			<h2 class="k-section-title">Stay & Pricing</h2>
+			<p class="k-section-subtitle">Choose your path to rest — from intimate getaways to exclusive buyouts</p>
 			<div class="k-pricing">
 				<div class="k-pricing__grid-wrapper">
 					<div class="k-pricing__grid">
 						<article class="k-pricing-card">
 							<div class="k-pricing-card__dot-bl" aria-hidden="true"></div>
 							<div class="k-pricing-card__dot-br" aria-hidden="true"></div>
-							<h3 class="k-pricing-card__title">Base Stay</h3>
+							<h3 class="k-pricing-card__title">Wellness Stay</h3>
 							<div class="k-pricing-card__price">
-								<span class="k-pricing-card__amount">&#8377;21,000</span>
+								<span class="k-pricing-card__amount">&#8377;18,000</span>
 								<span class="k-pricing-card__unit">+ taxes / 1 night / 2 persons</span>
 							</div>
 							<ul class="k-pricing-card__list">
-								<li>Entire property access</li>
-								<li>Accommodation in 5 rooms</li>
-								<li>Basic housekeeping</li>
+								<li>Double occupancy in villa bedroom</li>
+								<li>All three meals included</li>
+								<li>Morning yoga/meditation session</li>
+								<li>Guided nature walk</li>
 							</ul>
-							<p class="k-pricing-card__desc">A quiet private buyout for two, with full access to the sanctuary.</p>
-							<a href="#contact" class="k-pricing-card__btn" data-package="Base Stay">Enquire</a>
+							<p class="k-pricing-card__desc">A restorative stay for couples or solo travelers seeking disconnect.</p>
+							<a href="#contact" class="k-pricing-card__btn" data-package="Wellness Stay">Enquire</a>
 							<img class="k-pricing-card__art" src="img/31.webp" alt="" loading="lazy" width="120" height="90">
 						</article>
 						<article class="k-pricing-card">
 							<div class="k-pricing-card__dot-bl" aria-hidden="true"></div>
 							<div class="k-pricing-card__dot-br" aria-hidden="true"></div>
-							<h3 class="k-pricing-card__title">Add-ons</h3>
+							<h3 class="k-pricing-card__title">Private Buyout</h3>
 							<div class="k-pricing-card__price">
-								<span class="k-pricing-card__amount">&#8212;</span>
-								<span class="k-pricing-card__unit">Priced per choice</span>
+								<span class="k-pricing-card__amount">&#8377;60,000</span>
+								<span class="k-pricing-card__unit">+ taxes / 1 night / up to 10 guests</span>
 							</div>
 							<ul class="k-pricing-card__list">
-								<li>Vegetarian / vegan / satvik meals</li>
-								<li>Wellness sessions</li>
-								<li>Airport or city transfers</li>
-								<li>Creative experiences</li>
+								<li>Exclusive access to all 5 rooms</li>
+								<li>All meals included</li>
+								<li>Daily yoga &amp; meditation</li>
+								<li>Full property access</li>
 							</ul>
-							<p class="k-pricing-card__desc">Add meals, sessions, and experiences to shape your stay.</p>
-							<a href="#contact" class="k-pricing-card__btn" data-package="Add-ons">Enquire</a>
+							<p class="k-pricing-card__desc">Full sanctuary buyout for private getaways, family gatherings, or small group retreats.</p>
+							<a href="#contact" class="k-pricing-card__btn" data-package="Private Buyout">Enquire</a>
 							<img class="k-pricing-card__art" src="img/33.webp" alt="" loading="lazy" width="120" height="90">
 						</article>
 					</div>
@@ -570,9 +669,9 @@
 				<article class="k-pricing-card k-pricing-card--bottom">
 					<div class="k-pricing-card__dot-bl" aria-hidden="true"></div>
 					<div class="k-pricing-card__dot-br" aria-hidden="true"></div>
-					<h3 class="k-pricing-card__title">Custom Retreat</h3>
-					<p class="k-pricing-card__bottom-desc">Full buyout for up to 10 guests. Final pricing depends on food quality, facilitator fees, staffing, seasonality, group size, and customization.</p>
-					<a href="#contact" class="k-pricing-card__btn" data-package="Custom Retreat">Request a quote</a>
+					<h3 class="k-pricing-card__title">Curated Retreat Packages</h3>
+					<p class="k-pricing-card__bottom-desc">2-night Deep Rest Retreat from &#8377;32,000 per person (all-inclusive). Custom multi-day wellness packages available on request.</p>
+					<a href="#contact" class="k-pricing-card__btn" data-package="Curated Retreat">View Packages</a>
 					<img class="k-pricing-card__landscape" src="img/34.webp" alt="" loading="lazy" width="360" height="240">
 				</article>
 			</div>
@@ -614,10 +713,61 @@
 					<button type="submit" class="type-tiny unbutton form-submit">Send Request</button>
 				</form>
 			</section>
-			<footer class="page-footer type-tiny">
-				<span>&copy;&nbsp;2025 Kācima</span>
-				<span><a href="#about">About</a></span>
-				<span><a href="mailto:hello@kacima.com">Contact Us</a></span>
+			<!-- Custom Footer -->
+			<footer class="k-footer">
+				<div class="k-footer__grid">
+					<div class="k-footer__brand">
+						<div class="k-footer__brand-logo">
+							<img src="img/logo-white.png" alt="Kācima">
+							<span class="k-footer__brand-name">Kācima</span>
+						</div>
+						<p class="k-footer__brand-desc">A private nature retreat near Bangalore for rest, reflection, and meaningful community. Join us in the grove.</p>
+					</div>
+					<div class="k-footer__links">
+						<h4>Explore</h4>
+						<ul>
+							<li><a href="#about">About Us</a></li>
+							<li><a href="#offerings">Offerings</a></li>
+							<li><a href="#stay">The Stay</a></li>
+							<li><a href="#pricing">Pricing</a></li>
+							<li><a href="#community">Community</a></li>
+						</ul>
+					</div>
+					<div class="k-footer__links">
+						<h4>Visit</h4>
+						<ul>
+							<li><a href="#visit">Plan Your Visit</a></li>
+							<li><a href="#contact">Contact Us</a></li>
+							<li><a href="#location">Location</a></li>
+							<li><a href="#pricing">Book a Stay</a></li>
+						</ul>
+					</div>
+					<div class="k-footer__links k-footer__contact">
+						<h4>Connect</h4>
+						<p>Kanakapura Road<br>Bangalore, Karnataka</p>
+						<p><a href="mailto:hello@kacima.com">hello@kacima.com</a></p>
+						<div class="k-footer__social">
+							<a href="#" aria-label="Instagram" title="Instagram">
+								<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+							</a>
+							<a href="#" aria-label="WhatsApp" title="WhatsApp">
+								<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="k-footer__bottom">
+					<div class="k-footer__legal">
+						<a href="#">Privacy Policy</a>
+						<a href="#">Terms of Service</a>
+						<a href="#">Cancellation Policy</a>
+						<a href="#">Cookie Policy</a>
+						<a href="#">Accessibility</a>
+					</div>
+					<div class="k-footer__copyright">
+						&copy; 2026 <a href="#">Kācima</a>. All rights reserved. Crafted with intention.
+					</div>
+				</div>
 			</footer>
 		</main>
 		<!-- JavaScript dependencies -->

@@ -4,7 +4,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Function to animate the header (frame)
 const animateFrame = () => {
-  const frame = document.querySelector('.frame'); 
+  const frame = document.querySelector('.frame');
+  if (!frame) return;
   const frameTitle = frame.querySelector('.frame__title');
   
   gsap.timeline({
@@ -13,7 +14,7 @@ const animateFrame = () => {
     },
     scrollTrigger: {
       trigger: frame,
-      start: 'clamp(top bottom)', 
+      start: 'clamp(top bottom)',
       end: 'bottom top',
       scrub: true
     }
@@ -32,8 +33,9 @@ const animateFirstGrid = () => {
   const grid = document.querySelector('[data-grid-first]');
   if (!grid) return;
   const gridImages = grid.querySelectorAll('.grid__img');
+  const contentTitle = grid.parentNode.querySelector('.content__title');
 
-  gsap.timeline({
+  const tl = gsap.timeline({
     defaults: {
       ease: 'sine'
     },
@@ -48,14 +50,16 @@ const animateFirstGrid = () => {
   .from(gridImages, {
     stagger: 0.07,
     y: () => gsap.utils.random(window.innerHeight, window.innerHeight * 1.8)
-  })
-  // text content
-  .from(grid.parentNode.querySelector('.content__title'), {
-    duration: 1.2,
-    ease: 'power4',
-    yPercent: 180,
-    autoAlpha: 0
-  }, 0.8);
+  });
+
+  if (contentTitle) {
+    tl.from(contentTitle, {
+      duration: 1.2,
+      ease: 'power4',
+      yPercent: 180,
+      autoAlpha: 0
+    }, 0.8);
+  }
 };
 
 // Function to animate the second grid
@@ -63,9 +67,10 @@ const animateSecondGrid = () => {
   const grid = document.querySelector('[data-grid-second]');
   if (!grid) return;
   const gridImages = grid.querySelectorAll('.grid__img');
+  const gridItems = grid.querySelectorAll('.grid__item');
   const middleIndex = Math.floor(gridImages.length / 2);
 
-  gsap.timeline({
+  const tl = gsap.timeline({
     defaults: {
       ease: 'power3'
     },
@@ -88,16 +93,18 @@ const animateSecondGrid = () => {
       const distanceFromCenter = Math.abs(pos - middleIndex);
       return pos < middleIndex ? distanceFromCenter * 3 : distanceFromCenter * -3;
     },
-  })
-  // text content
-  .from(grid.querySelectorAll('.grid__item'), {
-    stagger: {
-      amount: 0.3,
-      from: 'center'
-    },
-    yPercent: 100,
-    autoAlpha: 0
-  }, 0);
+  });
+
+  if (gridItems.length) {
+    tl.from(gridItems, {
+      stagger: {
+        amount: 0.3,
+        from: 'center'
+      },
+      yPercent: 100,
+      autoAlpha: 0
+    }, 0);
+  }
 };
 
 // Function to animate the third grid
@@ -105,8 +112,9 @@ const animateThirdGrid = () => {
   const grid = document.querySelector('[data-grid-third]');
   if (!grid) return;
   const gridImages = grid.querySelectorAll('.grid__img');
+  const gridItems = grid.querySelectorAll('.grid__item');
 
-  gsap.timeline({
+  const tl = gsap.timeline({
     defaults: {
       ease: 'power3'
     },
@@ -130,12 +138,14 @@ const animateThirdGrid = () => {
     ease: 'none',
     stagger: 0.06,
     filter: pos => pos < gridImages.length-1 ? 'brightness(20%)' : 'brightness(100%)'
-  }, 0)
-  // text content
-  .from(grid.querySelectorAll('.grid__item'), {
-    xPercent: pos => pos%2 ? 100 : -100,
-    autoAlpha: 0
-  }, 0.06*gridImages.length);
+  }, 0);
+
+  if (gridItems.length) {
+    tl.from(gridItems, {
+      xPercent: pos => pos%2 ? 100 : -100,
+      autoAlpha: 0
+    }, 0.06*gridImages.length);
+  }
 };
 
 /**
@@ -348,8 +358,9 @@ const animateSeventhGrid = () => {
   const grid = document.querySelector('[data-grid-seventh]');
   if (!grid) return;
   const gridImages = grid.querySelectorAll('.grid__img');
+  const gridItems = grid.querySelectorAll('.grid__item');
   
-  gsap.timeline({
+  const tl = gsap.timeline({
     defaults: {
       ease: 'power1'
     },
@@ -372,13 +383,15 @@ const animateSeventhGrid = () => {
   .from([...gridImages].map(img => img.querySelector('.grid__img-inner')), {
     stagger: 0.08,
     yPercent: 102,
-  }, 0)
-  // text content
-  .from(grid.querySelectorAll('.grid__item'), {
-    yPercent: 20,
-    stagger: gridImages.length/2*0.08,
-    autoAlpha: 0,
   }, 0);
+
+  if (gridItems.length) {
+    tl.from(gridItems, {
+      yPercent: 20,
+      stagger: gridImages.length/2*0.08,
+      autoAlpha: 0,
+    }, 0);
+  }
 };
 
 // Function to animate the eighth grid
@@ -496,9 +509,11 @@ const init = () => {
   // Animate text sections as narrative chapter reveals
   animateTextReveals();
 };
-// Preload images and initialize animations
-preloadImages('.grid__img').then(() => {
-  document.body.classList.remove('loading'); // Remove the loading class from the body
+// Initialize after first-screen assets; don't block the hero on the full gallery preload.
+preloadImages('.k-frame-hero, .k-header__logo img').then(() => {
+  document.body.classList.remove('loading');
   init();
   window.scrollTo(0, 0);
+
+  preloadImages('.grid__img').then(() => ScrollTrigger.refresh());
 });
