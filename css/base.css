@@ -798,8 +798,36 @@ a:focus-visible {
 }
 
 .sentence {
-	display: inline-block;
+	display: inline;
+}
+
+.reveal-line {
+	display: block;
+	overflow: hidden;
+	line-height: inherit;
+	/* Generous vertical padding so the translated inner can rise from below the
+		clip without ever being truncated (yPercent: 105). */
+	padding: 0.15em 0 0.35em;
+	will-change: transform;
+}
+
+.reveal-line__inner {
+	display: block;
+	white-space: nowrap;
 	will-change: transform, opacity;
+}
+
+[data-split-revealed="true"] > .reveal-line + .reveal-line {
+	margin-top: -0.18em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sentence,
+	.reveal-line,
+	.reveal-line__inner {
+		opacity: 1 !important;
+		transform: none !important;
+	}
 }
 
 /* Grid System - Mobile Default (4 columns) */

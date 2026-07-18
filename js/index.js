@@ -462,35 +462,134 @@ const animateNinthGrid = () => {
   });
 };
 
-// Function to animate text sections (narrative scroll reveals)
+// Split a text element's content into one .reveal-line wrapper per *rendered* line.
+// This gives a true line-by-line reveal rather than a sentence-by-sentence one.
+const splitTextIntoRevealLines = (root = document) => {
+  const selectors = [
+    '[data-reveal] .content__text .sentence',
+    '[data-reveal] .type-tiny',
+    '[data-reveal] .k-section-title',
+    '[data-reveal] .k-section-subtitle',
+    '[data-reveal] .k-community__title',
+    '[data-reveal] .k-community__text',
+    '[data-reveal] .k-stay-card__title',
+    '[data-reveal] .k-stay-card__text',
+    '[data-reveal] .k-pricing-card__title',
+    '[data-reveal] .k-pricing-card__desc',
+    '[data-reveal] .k-pricing-card__bottom-desc'
+  ];
+  const targets = root.querySelectorAll(selectors.join(', '));
+
+  targets.forEach(el => {
+    if (el.dataset.splitRevealed === 'true') return;
+
+    const text = el.textContent.trim().replace(/\s+/g, ' ');
+    if (!text) return;
+
+    // Temporarily wrap each word so we can detect which share the same top.
+    const words = text.split(' ');
+    el.textContent = '';
+    const wordSpans = words.map((word, i) => {
+      const span = document.createElement('span');
+      span.textContent = (i > 0 ? ' ' : '') + word;
+      span.style.display = 'inline';
+      el.appendChild(span);
+      return span;
+    });
+
+    const tops = wordSpans.map(span => Math.round(span.getBoundingClientRect().top));
+    const groups = [];
+    let currentTop = tops[0];
+    let group = [];
+
+    wordSpans.forEach((span, i) => {
+      if (Math.abs(tops[i] - currentTop) < 2) {
+        group.push(span);
+      } else {
+        groups.push(group);
+        group = [span];
+        currentTop = tops[i];
+      }
+    });
+    if (group.length) groups.push(group);
+
+    // Replace with line wrappers: outer clips, inner moves.
+    el.textContent = '';
+    groups.forEach(group => {
+      const lineText = group.map(span => span.textContent).join('').trim();
+      const outer = document.createElement('span');
+      outer.className = 'reveal-line';
+      const inner = document.createElement('span');
+      inner.className = 'reveal-line__inner';
+      inner.textContent = lineText;
+      outer.appendChild(inner);
+      el.appendChild(outer);
+    });
+
+    el.dataset.splitRevealed = 'true';
+  });
+};
+
+// Function to animate text sections (scroll-scrubbed line-by-line reveals)
 const animateTextReveals = () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sections = document.querySelectorAll('[data-reveal]');
+  const sections = gsap.utils.toArray('[data-reveal]');
 
   if (prefersReducedMotion) return;
 
   sections.forEach(section => {
-    const heading = section.querySelector('.type-tiny');
-    const sentences = section.querySelectorAll('.sentence');
-    const targets = heading ? [heading, ...sentences] : [...sentences];
+    const lines = section.querySelectorAll('.reveal-line');
+    if (!lines.length) return;
 
-    gsap.from(targets, {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      ease: 'power3.out',
-      stagger: 0.15,
+    const total = lines.length;
+    const lineSlice = 1 / total;
+    // Each line uses ~55% of its slice to reveal, then holds final state for ~45%
+    // so the reader can land on fully revealed words rather than chasing motion.
+    const revealPortion = 0.55;
+
+    const tl = gsap.timeline({
+      defaults: {
+        ease: 'none'
+      },
       scrollTrigger: {
         trigger: section,
         start: 'top 75%',
-        toggleActions: 'play none none none'
+        end: () => `+=${Math.max(section.offsetHeight * 0.9, window.innerHeight * 0.7)}`,
+        scrub: 0.5
       }
+    });
+
+    lines.forEach((line, i) => {
+      const inner = line.querySelector('.reveal-line__inner');
+      if (!inner) return;
+
+      const start = i * lineSlice;
+
+      // Each line slides up from below its own clipped bounds while its opacity
+      // blooms. The .reveal-line wrapper has overflow:hidden and vertical padding
+      // so the translated inner remains visible until it settles, with no clipping.
+      tl.fromTo(inner,
+        {
+          yPercent: 105,
+          opacity: 0.08
+        },
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: lineSlice * revealPortion
+        },
+        start
+      );
     });
   });
 };
 
 // Main initialization function
 const init = () => {
+  // Split big typographic blocks into actual rendered lines before any
+  // ScrollTrigger measurements are final.
+  splitTextIntoRevealLines();
+
   // Animate the header (frame)
   animateFrame();
 
@@ -509,8 +608,10 @@ const init = () => {
   // Animate text sections as narrative chapter reveals
   animateTextReveals();
 };
-// Initialize after first-screen assets; don't block the hero on the full gallery preload.
-preloadImages('.k-frame-hero, .k-header__logo img').then(() => {
+// Initialize after first-screen assets and web fonts, so rendered-line splitting
+// measures the same typography visitors see. Don't block on the full gallery.
+const fontsReady = document.fonts ? document.fonts.ready.catch(() => {}) : Promise.resolve();
+Promise.all([preloadImages('.k-frame-hero, .k-header__logo img'), fontsReady]).then(() => {
   document.body.classList.remove('loading');
   init();
   window.scrollTo(0, 0);
