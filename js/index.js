@@ -2,6 +2,8 @@ import { preloadImages } from './utils.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const desktop = window.matchMedia('(min-width: 768px)');
+
 // Function to animate the header (frame)
 const animateFrame = () => {
   const frame = document.querySelector('.frame');
@@ -31,7 +33,7 @@ const animateFrame = () => {
 // Function to animate the first grid
 const animateFirstGrid = () => {
   const grid = document.querySelector('[data-grid-first]');
-  if (!grid) return;
+  if (!grid || !desktop.matches) return;
   const gridImages = grid.querySelectorAll('.grid__img');
   const contentTitle = grid.parentNode.querySelector('.content__title');
 
@@ -65,7 +67,7 @@ const animateFirstGrid = () => {
 // Function to animate the second grid
 const animateSecondGrid = () => {
   const grid = document.querySelector('[data-grid-second]');
-  if (!grid) return;
+  if (!grid || !desktop.matches) return;
   const gridImages = grid.querySelectorAll('.grid__img');
   const gridItems = grid.querySelectorAll('.grid__item');
   const middleIndex = Math.floor(gridImages.length / 2);
@@ -110,7 +112,7 @@ const animateSecondGrid = () => {
 // Function to animate the third grid
 const animateThirdGrid = () => {
   const grid = document.querySelector('[data-grid-third]');
-  if (!grid) return;
+  if (!grid || !desktop.matches) return;
   const gridImages = grid.querySelectorAll('.grid__img');
   const gridItems = grid.querySelectorAll('.grid__item');
 
@@ -201,7 +203,7 @@ const calculateInitialTransform = (element, offsetDistance = 250, maxRotation = 
 // Function to animate the fourth grid
 const animateFourthGrid = () => {
   const grid = document.querySelector('[data-grid-fourth]');
-  if (!grid) return;
+  if (!grid || !desktop.matches) return;
   const gridImages = grid.querySelectorAll('.grid__img');
 
   gsap.timeline({
@@ -246,7 +248,7 @@ const animateFourthGrid = () => {
 // Function to animate the fourth (v2) grid
 const animateFourthV2Grid = () => {
   const grid = document.querySelector('[data-grid-fourth-v2]');
-  if (!grid) return;
+  if (!grid || !desktop.matches) return;
   const gridImages = grid.querySelectorAll('.grid__img');
 
   gsap.timeline({
@@ -290,7 +292,7 @@ const animateFourthV2Grid = () => {
 // Function to animate the fifth grid
 const animateFifthGrid = () => {
   const grid = document.querySelector('[data-grid-fifth]');
-  if (!grid) return;
+  if (!grid || !desktop.matches) return;
   const gridImages = grid.querySelectorAll('.grid__img');
   
   gsap.timeline({
@@ -323,7 +325,7 @@ const animateFifthGrid = () => {
 // Function to animate the sixth grid
 const animateSixthGrid = () => {
   const grid = document.querySelector('[data-grid-sixth]');
-  if (!grid) return;
+  if (!grid || !desktop.matches) return;
   const gridImages = grid.querySelectorAll('.grid__img');
   
   gsap.timeline({
@@ -356,7 +358,7 @@ const animateSixthGrid = () => {
 // Function to animate the seventh grid
 const animateSeventhGrid = () => {
   const grid = document.querySelector('[data-grid-seventh]');
-  if (!grid) return;
+  if (!grid || !desktop.matches) return;
   const gridImages = grid.querySelectorAll('.grid__img');
   const gridItems = grid.querySelectorAll('.grid__item');
   
@@ -397,7 +399,7 @@ const animateSeventhGrid = () => {
 // Function to animate the eighth grid
 const animateEighthGrid = () => {
   const grid = document.querySelector('[data-grid-eighth]');
-  if (!grid) return; // Guard clause
+  if (!grid || !desktop.matches) return; // Guard clause
   const gridImages = grid.querySelectorAll('.grid__img');
   
   gsap.timeline({
@@ -436,7 +438,7 @@ const animateEighthGrid = () => {
 // Function to animate the ninth grid
 const animateNinthGrid = () => {
   const grid = document.querySelector('[data-grid-ninth]');
-  if (!grid) return;
+  if (!grid || !desktop.matches) return;
   const gridImages = grid.querySelectorAll('.grid__img');
   
   gsap.timeline({
