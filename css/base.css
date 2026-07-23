@@ -754,22 +754,22 @@ a:focus-visible {
 }
 
 .content--chapter {
-	min-height: 100dvh;
-	padding-top: 8vh;
-	padding-bottom: 8vh;
+	min-height: auto;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
 	text-align: center;
 }
 
 .content--chapter .type-tiny {
-	font-size: clamp(1em, 1.8vw, 1.25em);
-	margin-bottom: 1em;
+	font-size: clamp(0.85em, 1.8vw, 1.25em);
+	margin-bottom: 0.75rem;
 	letter-spacing: 0.15em;
 	opacity: 0.8;
 }
 
 .content--chapter .content__text {
-	font-size: clamp(1.5em, 6vw, 4.5em);
-	line-height: 1.15;
+	font-size: clamp(1.15rem, 5vw, 4.5em);
+	line-height: 1.2;
 	font-weight: 500;
 	max-width: 90vw;
 	margin: 0 auto;
@@ -821,6 +821,16 @@ a:focus-visible {
 	grid-template-areas: 'main';
 	grid-template-rows: 100%;
 	grid-template-columns: 100%;
+}
+
+#sanctuary.content--full {
+	height: auto;
+	min-height: 60dvh;
+	padding: 2rem 0;
+}
+
+#sanctuary.content--full.content--padded {
+	padding: 2rem var(--page-padding);
 }
 
 .content__text {
@@ -1104,12 +1114,17 @@ a:focus-visible {
     }
 
     .content--chapter {
+        min-height: 100dvh;
         padding-top: 12vh;
         padding-bottom: 12vh;
     }
 
     .content--chapter .type-tiny {
         margin-bottom: 1.5em;
+    }
+
+    .content--chapter .content__text {
+        font-size: clamp(1.5em, 6vw, 4.5em);
     }
 
     .marquee {
@@ -1183,7 +1198,43 @@ a:focus-visible {
 		align-self: end;
 	}
 	
-	.frame #cdawrap {
+/* Texture for content--full sections */
+.content--full {
+	position: relative;
+}
+
+.content--full::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	background: url('../img/kacima-textured-bg.png') center / cover no-repeat;
+	opacity: 0.42;
+	mix-blend-mode: overlay;
+}
+
+.content--full > * {
+	position: relative;
+	z-index: 1;
+}
+
+.theme-brown.content--full::before,
+.theme-emerald.content--full::before,
+.theme-olive.content--full::before {
+	background-image: url('../img/kacima-textured-bg.png');
+	mix-blend-mode: overlay;
+	opacity: 0.48;
+}
+
+.theme-cream.content--full::before,
+.theme-sage.content--full::before {
+	background-image: url('../img/kacima-textured-bg-dark.png');
+	mix-blend-mode: soft-light;
+	opacity: 0.28;
+}
+
+.frame #cdawrap {
 		text-align: center;
 		max-width: 100%;
 		justify-self: center;

@@ -300,9 +300,9 @@ const animateFifthGrid = () => {
     scrollTrigger: {
       trigger: grid,
       start: 'center center',
-      end: '+=250%',
+      end: '+=100%',
       pin: grid.parentNode,
-      scrub: 0.3,
+      scrub: 0.2,
     }
   })
   .set(grid, {perspective: 1000})
