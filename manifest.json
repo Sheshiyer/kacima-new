@@ -1,0 +1,21 @@
+{
+  "name": "Kācima — Private Nature Retreat",
+  "short_name": "Kācima",
+  "description": "A private sanctuary on Kanakapura Road near Bangalore for rest, yoga, sound healing, and meaningful community.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5EFE0",
+  "theme_color": "#5A5A32",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}
