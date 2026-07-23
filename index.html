@@ -245,7 +245,7 @@
 				font-weight: 400;
 				line-height: 1.15;
 				margin: 0 0 1.25rem;
-				color: var(--color-soil-brown);
+				color: var(--color-text);
 			}
 
 			.k-contact__heading-accent {
@@ -255,7 +255,7 @@
 
 			.k-contact__subtitle {
 				font-size: 1.05rem;
-				color: rgba(58, 47, 37, 0.6);
+				color: rgba(var(--color-soil-brown-rgb), 0.6);
 				margin: 0;
 				line-height: 1.6;
 			}
@@ -273,7 +273,7 @@
 				display: flex;
 				flex-direction: column;
 				gap: 0.4rem;
-				border-bottom: 1px solid rgba(58, 47, 37, 0.2);
+				border-bottom: 1px solid rgba(var(--color-soil-brown-rgb), 0.2);
 				padding-bottom: 0.5rem;
 				transition: border-color 0.3s ease;
 				opacity: 0;
@@ -287,7 +287,7 @@
 			}
 
 			.k-contact__field:focus-within {
-				border-bottom-color: var(--color-soil-brown);
+				border-bottom-color: var(--color-text);
 			}
 
 			.k-contact__field.valid {
@@ -302,7 +302,7 @@
 				font-size: 0.75rem;
 				text-transform: uppercase;
 				letter-spacing: 0.08em;
-				color: rgba(58, 47, 37, 0.5);
+				color: rgba(var(--color-soil-brown-rgb), 0.5);
 				font-weight: 500;
 			}
 
@@ -322,18 +322,18 @@
 				outline: none;
 				font-family: inherit;
 				font-size: 1rem;
-				color: var(--color-soil-brown);
+				color: var(--color-text);
 				padding: 0.35rem 2rem 0.35rem 0;
 				line-height: 1.5;
 			}
 
 			.k-contact__input::placeholder {
-				color: rgba(58, 47, 37, 0.3);
+				color: rgba(var(--color-soil-brown-rgb), 0.3);
 				transition: color 0.3s ease;
 			}
 
 			.k-contact__input:focus::placeholder {
-				color: rgba(58, 47, 37, 0.15);
+				color: rgba(var(--color-soil-brown-rgb), 0.15);
 			}
 
 			.k-contact__input--textarea {
@@ -421,14 +421,14 @@
 			.k-contact__alt {
 				margin-top: 1.5rem;
 				font-size: 0.8rem;
-				color: rgba(58, 47, 37, 0.4);
+				color: rgba(var(--color-soil-brown-rgb), 0.4);
 				text-align: center;
 			}
 
 			.k-contact__alt a {
-				color: rgba(58, 47, 37, 0.55);
+				color: rgba(var(--color-soil-brown-rgb), 0.55);
 				text-decoration: none;
-				border-bottom: 1px solid rgba(58, 47, 37, 0.2);
+				border-bottom: 1px solid rgba(var(--color-soil-brown-rgb), 0.2);
 				transition: color 0.2s ease;
 			}
 
@@ -442,7 +442,7 @@
 				display: inline-block;
 				width: 2px;
 				height: 1em;
-				background: var(--color-soil-brown);
+				background: var(--color-text);
 				margin-left: 1px;
 				vertical-align: text-bottom;
 				animation: blink 0.8s step-end infinite;
@@ -469,6 +469,11 @@
 			}
 
 			.k-community__wa-btn:hover { background: #1ebe5d; }
+
+			#contact {
+				background: var(--color-bg);
+				color: var(--color-text);
+			}
 
 			@media screen and (max-width: 600px) {
 				.k-contact__form { gap: 1.5rem; }
