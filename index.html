@@ -223,62 +223,185 @@
 		<link rel="stylesheet" type="text/css" href="css/base.css" />
 		<link rel="stylesheet" type="text/css" href="css/form.css" />
 		<style>
-			.k-wa-flow {
-				margin-top: 2.5rem;
-				max-width: 39rem;
+			/* ── Kācima Contact — reskinned from arceage-contact-us ── */
+			.k-contact {
+				width: 100%;
+				max-width: 48rem;
+				margin: 0 auto;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
 			}
-			.k-wa-flow__hint {
-				font-size: 0.9rem;
-				color: rgba(var(--color-soft-cream-rgb), 0.55);
-				margin: 0 0 2rem;
+
+			.k-contact__header {
+				text-align: center;
+				margin-bottom: 3.5rem;
+				width: 100%;
+			}
+
+			.k-contact__heading {
+				font-family: "Tiro Kannada", Georgia, "Times New Roman", serif;
+				font-size: clamp(1.5rem, 4vw, 3.25rem);
+				font-weight: 400;
+				line-height: 1.15;
+				margin: 0 0 1.25rem;
+				color: var(--color-soil-brown);
+			}
+
+			.k-contact__heading-accent {
+				font-style: italic;
+				color: var(--color-terracotta);
+			}
+
+			.k-contact__subtitle {
+				font-size: 1.05rem;
+				color: rgba(58, 47, 37, 0.6);
+				margin: 0;
 				line-height: 1.6;
 			}
-			.k-wa-flow__fields {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 1.75rem 2rem;
-				margin-bottom: 2rem;
+
+			.k-contact__form {
+				max-width: 42rem;
+				width: 100%;
+				margin: 0 auto;
+				display: flex;
+				flex-direction: column;
+				gap: 2rem;
 			}
-			.k-wa-field--full { grid-column: 1 / -1; }
-			.k-wa-field__label {
-				display: block;
-				font-size: 0.72rem;
+
+			.k-contact__field {
+				display: flex;
+				flex-direction: column;
+				gap: 0.4rem;
+				border-bottom: 1px solid rgba(58, 47, 37, 0.2);
+				padding-bottom: 0.5rem;
+				transition: border-color 0.3s ease;
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			.k-contact__field.revealed {
+				opacity: 1;
+				transform: translateY(0);
+				transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+			}
+
+			.k-contact__field:focus-within {
+				border-bottom-color: var(--color-soil-brown);
+			}
+
+			.k-contact__field.valid {
+				border-bottom-color: var(--color-sage);
+			}
+
+			.k-contact__field.invalid {
+				border-bottom-color: var(--color-terracotta);
+			}
+
+			.k-contact__label {
+				font-size: 0.75rem;
 				text-transform: uppercase;
-				letter-spacing: 0.1em;
-				color: rgba(var(--color-soft-cream-rgb), 0.45);
-				margin-bottom: 0.5rem;
+				letter-spacing: 0.08em;
+				color: rgba(58, 47, 37, 0.5);
+				font-weight: 500;
 			}
-			.k-wa-field__label span {
-				text-transform: none;
-				letter-spacing: 0;
-				opacity: 0.6;
+
+			.k-contact__required {
+				color: var(--color-terracotta);
 			}
-			.k-wa-field__input {
+
+			.k-contact__input-wrap {
+				position: relative;
+				width: 100%;
+			}
+
+			.k-contact__input {
 				width: 100%;
 				background: transparent;
 				border: 0;
-				border-bottom: 1px solid var(--color-border);
-				padding: 0.5rem 0;
-				font-family: inherit;
-				font-size: var(--font-size-body-mobile);
-				color: var(--color-text);
-				border-radius: 0;
 				outline: none;
-				transition: border-color 0.3s ease;
+				font-family: inherit;
+				font-size: 1rem;
+				color: var(--color-soil-brown);
+				padding: 0.35rem 2rem 0.35rem 0;
+				line-height: 1.5;
+			}
+
+			.k-contact__input::placeholder {
+				color: rgba(58, 47, 37, 0.3);
+				transition: color 0.3s ease;
+			}
+
+			.k-contact__input:focus::placeholder {
+				color: rgba(58, 47, 37, 0.15);
+			}
+
+			.k-contact__input--textarea {
 				resize: none;
+				min-height: 2.5rem;
 			}
-			.k-wa-field__input::placeholder {
-				color: var(--color-text);
-				opacity: 0.35;
+
+			.k-contact__icon {
+				position: absolute;
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 20px;
+				height: 20px;
+				opacity: 0;
+				transition: opacity 0.25s ease;
+				pointer-events: none;
 			}
-			.k-wa-field__input:focus { border-bottom-color: #25d366; }
-			.k-wa-flow__btn {
+
+			.k-contact__icon--valid {
+				background: var(--color-sage);
+				mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpolyline points='22 4 12 14.01 9 11.01'/%3E%3C/svg%3E");
+				-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpolyline points='22 4 12 14.01 9 11.01'/%3E%3C/svg%3E");
+				mask-size: contain;
+				mask-repeat: no-repeat;
+				mask-position: center;
+				-webkit-mask-size: contain;
+				-webkit-mask-repeat: no-repeat;
+				-webkit-mask-position: center;
+			}
+
+			.k-contact__icon--invalid {
+				background: var(--color-terracotta);
+				mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='15' y1='9' x2='9' y2='15'/%3E%3Cline x1='9' y1='9' x2='15' y2='15'/%3E%3C/svg%3E");
+				-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='15' y1='9' x2='9' y2='15'/%3E%3Cline x1='9' y1='9' x2='15' y2='15'/%3E%3C/svg%3E");
+				mask-size: contain;
+				mask-repeat: no-repeat;
+				mask-position: center;
+				-webkit-mask-size: contain;
+				-webkit-mask-repeat: no-repeat;
+				-webkit-mask-position: center;
+			}
+
+			.k-contact__icon.show {
+				opacity: 1;
+			}
+
+			.k-contact__submit {
+				margin-top: 1rem;
+				display: flex;
+				justify-content: center;
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			.k-contact__submit.revealed {
+				opacity: 1;
+				transform: translateY(0);
+				transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+			}
+
+			.k-contact__btn {
 				display: inline-flex;
 				align-items: center;
-				gap: 0.65rem;
-				padding: 0.9rem 2rem;
-				background: #25d366;
-				color: #fff;
+				gap: 0.6rem;
+				padding: 0.75rem 2.25rem;
+				background: var(--color-soil-brown);
+				color: var(--color-soft-cream);
 				border: none;
 				font-family: inherit;
 				font-size: 0.8rem;
@@ -286,22 +409,50 @@
 				letter-spacing: 0.08em;
 				font-weight: 500;
 				cursor: pointer;
-				transition: background 0.25s ease, transform 0.15s ease;
-				border-radius: 2px;
+				border-radius: 9999px;
+				transition: background 0.3s ease, transform 0.15s ease;
 			}
-			.k-wa-flow__btn:hover { background: #1ebe5d; transform: translateY(-1px); }
-			.k-wa-flow__alt {
-				margin-top: 1.25rem;
+
+			.k-contact__btn:hover {
+				background: #25d366;
+				transform: translateY(-1px);
+			}
+
+			.k-contact__alt {
+				margin-top: 1.5rem;
 				font-size: 0.8rem;
-				color: rgba(var(--color-soft-cream-rgb), 0.4);
+				color: rgba(58, 47, 37, 0.4);
+				text-align: center;
 			}
-			.k-wa-flow__alt a {
-				color: rgba(var(--color-soft-cream-rgb), 0.55);
+
+			.k-contact__alt a {
+				color: rgba(58, 47, 37, 0.55);
 				text-decoration: none;
-				border-bottom: 1px solid rgba(var(--color-soft-cream-rgb), 0.2);
+				border-bottom: 1px solid rgba(58, 47, 37, 0.2);
 				transition: color 0.2s ease;
 			}
-			.k-wa-flow__alt a:hover { color: var(--color-soft-cream); }
+
+			.k-contact__alt a:hover {
+				color: var(--color-soil-brown);
+			}
+
+			/* Typewriter cursor */
+			.typewriter-cursor::after {
+				content: '';
+				display: inline-block;
+				width: 2px;
+				height: 1em;
+				background: var(--color-soil-brown);
+				margin-left: 1px;
+				vertical-align: text-bottom;
+				animation: blink 0.8s step-end infinite;
+			}
+
+			@keyframes blink {
+				50% { opacity: 0; }
+			}
+
+			/* Community WhatsApp button */
 			.k-community__wa-btn {
 				display: inline-flex;
 				align-items: center;
@@ -316,10 +467,12 @@
 				border-radius: 2px;
 				transition: background 0.25s ease;
 			}
+
 			.k-community__wa-btn:hover { background: #1ebe5d; }
+
 			@media screen and (max-width: 600px) {
-				.k-wa-flow__fields { grid-template-columns: 1fr; }
-				.k-wa-field--full { grid-column: 1; }
+				.k-contact__form { gap: 1.5rem; }
+				.k-contact__header { margin-bottom: 2.5rem; }
 			}
 		</style>
 		<script>document.documentElement.className="js";</script>
@@ -943,42 +1096,71 @@
 					<div class="grid__img" style="background-image:url(img/38.webp)"></div>
 				</div>
 			</section>
-		<section class="content content--padded content--chapter" id="contact" data-reveal>
-			<h2 class="type-tiny">Visit &amp; Connect</h2>
-			<p class="content__text">
-				<span class="sentence">Share what you&rsquo;re seeking, and we&rsquo;ll guide your time here.</span>
-				<span class="sentence">Directions are shared upon confirmation.</span>
-				<span class="sentence">Message us on WhatsApp to begin.</span>
-			</p>
-
-			<div class="k-wa-flow">
-				<p class="k-wa-flow__hint">Tell us a little about your visit — we usually reply within a few hours.</p>
-
-				<div class="k-wa-flow__fields">
-					<div class="k-wa-field">
-						<label class="k-wa-field__label" for="wa-name">Your name</label>
-						<input class="k-wa-field__input" type="text" id="wa-name" placeholder="e.g. Priya">
-					</div>
-					<div class="k-wa-field">
-						<label class="k-wa-field__label" for="wa-dates">Preferred dates</label>
-						<input class="k-wa-field__input" type="text" id="wa-dates" placeholder="e.g. 5–7 Aug 2025">
-					</div>
-					<div class="k-wa-field">
-						<label class="k-wa-field__label" for="wa-guests">Number of guests</label>
-						<input class="k-wa-field__input" type="text" id="wa-guests" placeholder="e.g. 2">
-					</div>
-					<div class="k-wa-field k-wa-field--full">
-						<label class="k-wa-field__label" for="wa-note">What are you seeking? <span>(optional)</span></label>
-						<textarea class="k-wa-field__input" id="wa-note" rows="2" placeholder="Rest, yoga, a retreat, a private gathering…"></textarea>
-					</div>
+		<section class="content content--padded content--chapter theme-cream" id="contact" data-reveal>
+			<div class="k-contact">
+				<div class="k-contact__header">
+					<h2 class="k-contact__heading">
+						<span class="k-contact__heading-accent" data-typewriter="Let's connect!" data-delay="0"></span>
+						<span data-typewriter="Share your intention" data-delay="0.2"></span>
+						<br>
+						<span data-typewriter="and we'll guide your stay" data-delay="0.4"></span>
+					</h2>
+					<p class="k-contact__subtitle" data-typewriter="Message us on WhatsApp — we reply within a few hours" data-delay="0.6"></p>
 				</div>
 
-				<button class="k-wa-flow__btn" id="wa-send-btn" type="button">
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-					Message us on WhatsApp
-				</button>
+				<form class="k-contact__form" id="k-contact-form" novalidate>
+					<div class="k-contact__field" data-reveal-field>
+						<label class="k-contact__label" for="kc-name">Your Name <span class="k-contact__required">*</span></label>
+						<div class="k-contact__input-wrap">
+							<input class="k-contact__input" type="text" id="kc-name" name="name" placeholder="Who's reaching out?" required>
+							<div class="k-contact__icon k-contact__icon--valid" aria-hidden="true"></div>
+							<div class="k-contact__icon k-contact__icon--invalid" aria-hidden="true"></div>
+						</div>
+					</div>
 
-				<p class="k-wa-flow__alt">Prefer email? Write to <a href="mailto:contractkacima@gmail.com">contractkacima@gmail.com</a></p>
+					<div class="k-contact__field" data-reveal-field>
+						<label class="k-contact__label" for="kc-email">Email <span class="k-contact__required">*</span></label>
+						<div class="k-contact__input-wrap">
+							<input class="k-contact__input" type="email" id="kc-email" name="email" placeholder="Where can we reach you?" required>
+							<div class="k-contact__icon k-contact__icon--valid" aria-hidden="true"></div>
+							<div class="k-contact__icon k-contact__icon--invalid" aria-hidden="true"></div>
+						</div>
+					</div>
+
+					<div class="k-contact__field" data-reveal-field>
+						<label class="k-contact__label" for="kc-phone">Phone Number <span class="k-contact__required">*</span></label>
+						<div class="k-contact__input-wrap">
+							<input class="k-contact__input" type="tel" id="kc-phone" name="phone" placeholder="Best number to reach you?" required>
+							<div class="k-contact__icon k-contact__icon--valid" aria-hidden="true"></div>
+							<div class="k-contact__icon k-contact__icon--invalid" aria-hidden="true"></div>
+						</div>
+					</div>
+
+					<div class="k-contact__field" data-reveal-field>
+						<label class="k-contact__label" for="kc-dates">Preferred Dates</label>
+						<div class="k-contact__input-wrap">
+							<input class="k-contact__input" type="text" id="kc-dates" name="dates" placeholder="e.g. 5–7 Aug 2025">
+						</div>
+					</div>
+
+					<div class="k-contact__field" data-reveal-field>
+						<label class="k-contact__label" for="kc-message">What are you seeking? <span class="k-contact__required">*</span></label>
+						<div class="k-contact__input-wrap">
+							<textarea class="k-contact__input k-contact__input--textarea" id="kc-message" name="message" rows="1" placeholder="Rest, yoga, a retreat, a private gathering…" required></textarea>
+							<div class="k-contact__icon k-contact__icon--valid" aria-hidden="true"></div>
+							<div class="k-contact__icon k-contact__icon--invalid" aria-hidden="true"></div>
+						</div>
+					</div>
+
+					<div class="k-contact__submit" data-reveal-field>
+						<button type="submit" class="k-contact__btn" id="kc-submit-btn">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+							Message us on WhatsApp
+						</button>
+					</div>
+				</form>
+
+				<p class="k-contact__alt">Prefer email? Write to <a href="mailto:contractkacima@gmail.com">contractkacima@gmail.com</a></p>
 			</div>
 			</section>
 			<!-- Custom Footer -->
@@ -1056,22 +1238,121 @@
 		<script>
 			(function () {
 				var WA_NUMBER = '919538978713';
-				var btn = document.getElementById('wa-send-btn');
-				if (!btn) return;
-				btn.addEventListener('click', function () {
-					var name = (document.getElementById('wa-name').value || '').trim();
-					var dates = (document.getElementById('wa-dates').value || '').trim();
-					var guests = (document.getElementById('wa-guests').value || '').trim();
-					var note = (document.getElementById('wa-note').value || '').trim();
+
+				/* ── Typewriter ── */
+				var twEls = document.querySelectorAll('[data-typewriter]');
+				twEls.forEach(function (el) {
+					var text = el.getAttribute('data-typewriter');
+					var delay = parseFloat(el.getAttribute('data-delay')) || 0;
+					var speed = 0.012;
+					var chars = text.split('');
+					el.textContent = '';
+					el.style.opacity = '0';
+					el.style.transition = 'opacity 0.3s ease';
+
+					var observer = new IntersectionObserver(function (entries) {
+						entries.forEach(function (entry) {
+							if (!entry.isIntersecting) return;
+							observer.unobserve(el);
+							setTimeout(function () {
+								el.style.opacity = '1';
+								var i = 0;
+								var interval = setInterval(function () {
+									if (i < chars.length) {
+										el.textContent += chars[i];
+										i++;
+									} else {
+										clearInterval(interval);
+										el.classList.add('typewriter-cursor');
+									}
+								}, speed * 1000);
+							}, delay * 1000);
+						});
+					}, { threshold: 0.3 });
+					observer.observe(el);
+				});
+
+				/* ── Field reveal on scroll ── */
+				var revealFields = document.querySelectorAll('[data-reveal-field]');
+				var revealObserver = new IntersectionObserver(function (entries) {
+					entries.forEach(function (entry) {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('revealed');
+							revealObserver.unobserve(entry.target);
+						}
+					});
+				}, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+				revealFields.forEach(function (f) { revealObserver.observe(f); });
+
+				/* ── Live validation ── */
+				var form = document.getElementById('k-contact-form');
+				if (!form) return;
+
+				var touched = {};
+				var fields = form.querySelectorAll('.k-contact__field');
+				fields.forEach(function (field) {
+					var input = field.querySelector('input, textarea');
+					if (!input) return;
+					var name = input.name;
+					var required = input.hasAttribute('required');
+					var validIcon = field.querySelector('.k-contact__icon--valid');
+					var invalidIcon = field.querySelector('.k-contact__icon--invalid');
+
+					function validate() {
+						if (!touched[name]) return;
+						var val = input.value.trim();
+						var ok = false;
+						if (name === 'email') {
+							ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+						} else if (name === 'phone') {
+							ok = /^\+?[\d\s\-\(\)]{7,20}$/.test(val);
+						} else {
+							ok = val.length > 0;
+						}
+						field.classList.remove('valid', 'invalid');
+						if (validIcon) validIcon.classList.remove('show');
+						if (invalidIcon) invalidIcon.classList.remove('show');
+						if (required || val.length > 0) {
+							if (ok) {
+								field.classList.add('valid');
+								if (validIcon) validIcon.classList.add('show');
+							} else {
+								field.classList.add('invalid');
+								if (invalidIcon) invalidIcon.classList.add('show');
+							}
+						}
+					}
+
+					input.addEventListener('blur', function () {
+						touched[name] = true;
+						validate();
+					});
+					input.addEventListener('input', function () {
+						if (touched[name]) validate();
+					});
+				});
+
+				/* ── Submit → WhatsApp ── */
+				var submitBtn = document.getElementById('kc-submit-btn');
+				submitBtn.addEventListener('click', function (e) {
+					e.preventDefault();
+					var name = (document.getElementById('kc-name').value || '').trim();
+					var email = (document.getElementById('kc-email').value || '').trim();
+					var phone = (document.getElementById('kc-phone').value || '').trim();
+					var dates = (document.getElementById('kc-dates').value || '').trim();
+					var message = (document.getElementById('kc-message').value || '').trim();
+
 					var lines = ['Hi, I\u2019d like to enquire about a stay at K\u0101cima.'];
 					if (name) lines.push('My name is ' + name + '.');
+					if (email) lines.push('Email: ' + email + '.');
+					if (phone) lines.push('Phone: ' + phone + '.');
 					if (dates) lines.push('Preferred dates: ' + dates + '.');
-					if (guests) lines.push('Number of guests: ' + guests + '.');
-					if (note) lines.push('What I\u2019m seeking: ' + note);
+					if (message) lines.push('What I\u2019m seeking: ' + message);
 					var msg = encodeURIComponent(lines.join('\n'));
 					window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank', 'noopener');
 				});
 
+				/* ── Community WhatsApp ── */
 				var communityBtn = document.getElementById('community-wa-btn');
 				var communityInput = document.getElementById('community-email');
 				if (communityBtn && communityInput) {
