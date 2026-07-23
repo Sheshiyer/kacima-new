@@ -48,10 +48,12 @@
 					"alternateName": "Kacima Sanctuary",
 					"description": "A private nature retreat near Bangalore for rest, reflection, yoga, sound healing, breathwork, and meaningful community. Up to 10 guests by appointment on Kanakapura Road.",
 					"url": "https://www.kacima.space/",
-					"telephone": null,
 					"email": "hello@kacima.com",
 					"image": "https://www.kacima.space/img/og-image.png",
-					"logo": "https://www.kacima.space/img/logo.svg",
+					"logo": {
+						"@type": "ImageObject",
+						"url": "https://www.kacima.space/img/logo-color.png"
+					},
 					"priceRange": "₹₹₹",
 					"numberOfRooms": 5,
 					"address": {
@@ -71,12 +73,15 @@
 						{ "@type": "LocationFeatureSpecification", "name": "Meditation", "value": true },
 						{ "@type": "LocationFeatureSpecification", "name": "Sound Healing", "value": true },
 						{ "@type": "LocationFeatureSpecification", "name": "Breathwork", "value": true },
+						{ "@type": "LocationFeatureSpecification", "name": "Vipassana", "value": true },
 						{ "@type": "LocationFeatureSpecification", "name": "Swimming Pool", "value": true },
 						{ "@type": "LocationFeatureSpecification", "name": "Farm-to-table Meals", "value": true },
 						{ "@type": "LocationFeatureSpecification", "name": "Nature Walks", "value": true },
 						{ "@type": "LocationFeatureSpecification", "name": "Ice Bath", "value": true },
 						{ "@type": "LocationFeatureSpecification", "name": "Steam Room", "value": true },
-						{ "@type": "LocationFeatureSpecification", "name": "Massage", "value": true }
+						{ "@type": "LocationFeatureSpecification", "name": "Massage", "value": true },
+						{ "@type": "LocationFeatureSpecification", "name": "Grounding / Earthing", "value": true },
+						{ "@type": "LocationFeatureSpecification", "name": "Creative Circles", "value": true }
 					],
 					"offers": [
 						{
@@ -94,9 +99,19 @@
 							"price": "60000",
 							"priceCurrency": "INR",
 							"availability": "https://schema.org/InStock"
+						},
+						{
+							"@type": "Offer",
+							"name": "Deep Rest Retreat",
+							"description": "2-night all-inclusive curated wellness retreat. Custom multi-day packages available on request.",
+							"price": "32000",
+							"priceCurrency": "INR",
+							"availability": "https://schema.org/InStock"
 						}
 					],
-					"sameAs": []
+					"sameAs": [
+						"mailto:hello@kacima.com"
+					]
 				},
 				{
 					"@type": "WebSite",
@@ -107,6 +122,96 @@
 					"publisher": {
 						"@id": "https://www.kacima.space/#lodging"
 					}
+				},
+				{
+					"@type": "FAQPage",
+					"@id": "https://www.kacima.space/#faq",
+					"mainEntity": [
+						{
+							"@type": "Question",
+							"name": "What is Kācima?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "Kācima is a private nature retreat on Kanakapura Road near Bangalore, Karnataka, India. It is a sanctuary among ancient Peepal and Neem trees, designed for up to 10 guests seeking deep rest, yoga, meditation, sound healing, breathwork, and meaningful community. Visits are by appointment only to preserve the sanctuary's peace."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "How far is Kācima from Bangalore city centre?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "Kācima is approximately 55 minutes from central Bangalore and 1.5 hours from Kempegowda International Airport. It is located just 5 minutes from the Art of Living International Centre on Kanakapura Road."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "How many guests can stay at Kācima?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "Kācima accommodates up to 10 guests across five rooms — three villa bedrooms and two cottage rooms. The space is intentionally intimate to maintain a sanctuary atmosphere."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "What wellness practices does Kācima offer?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "Kācima offers yoga, meditation, breathwork, Vipassana insight meditation, sound healing, massage, nature walks, grounding and earthing, creative circles, ice bath, and herbal steam sessions. All practices are held by trained facilitators in purpose-designed indoor and outdoor spaces."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "What food is served at Kācima?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "Kācima serves farm-to-table vegetarian and vegan meals prepared daily, with satvik (pure, light) options available. All three meals are included in every stay package."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "How do I book a stay at Kācima?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "Kācima accepts visits by appointment only. To enquire or book, share your intention and dates through the contact form on kacima.space or write directly to hello@kacima.com. Directions to the property are shared upon confirmation."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "What are the pricing options at Kācima?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "Kācima offers three stay options: a Wellness Stay at ₹18,000 per night for two guests (double occupancy villa bedroom, all meals, yoga, and nature walk); a Private Buyout at ₹60,000 per night for the entire property of up to 10 guests; and a 2-night Deep Rest Retreat from ₹32,000 per person, all-inclusive. Custom multi-day wellness packages are available on request."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "Is Kācima suitable for corporate retreats or group bookings?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "Yes. The Private Buyout option at Kācima grants exclusive access to the entire property — all 5 rooms, all meals, daily yoga and meditation, and full use of indoor and outdoor spaces — for up to 10 guests. It is well suited for small corporate off-sites, family gatherings, wellness team retreats, and creative residencies."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "What is the meaning of the name Kācima?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "The name Kācima is inspired by the Peepal and Neem trees growing entwined on the property — a symbol of protection, clarity, and renewal rooted in the Indian landscape. It reflects the retreat's philosophy of deep rest and connection with nature."
+							}
+						}
+					]
+				},
+				{
+					"@type": "BreadcrumbList",
+					"@id": "https://www.kacima.space/#breadcrumb",
+					"itemListElement": [
+						{
+							"@type": "ListItem",
+							"position": 1,
+							"name": "Kācima",
+							"item": "https://www.kacima.space/"
+						}
+					]
 				}
 			]
 		}
