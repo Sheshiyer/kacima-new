@@ -48,7 +48,7 @@
 					"alternateName": "Kacima Sanctuary",
 					"description": "A private nature retreat near Bangalore for rest, reflection, yoga, sound healing, breathwork, and meaningful community. Up to 10 guests by appointment on Kanakapura Road.",
 					"url": "https://www.kacima.space/",
-					"email": "hello@kacima.com",
+					"email": "contractkacima@gmail.com",
 					"image": "https://www.kacima.space/img/og-image.png",
 					"logo": {
 						"@type": "ImageObject",
@@ -110,7 +110,7 @@
 						}
 					],
 					"sameAs": [
-						"mailto:hello@kacima.com"
+						"mailto:contractkacima@gmail.com"
 					]
 				},
 				{
@@ -172,7 +172,7 @@
 							"name": "How do I book a stay at Kācima?",
 							"acceptedAnswer": {
 								"@type": "Answer",
-								"text": "Kācima accepts visits by appointment only. To enquire or book, share your intention and dates through the contact form on kacima.space or write directly to hello@kacima.com. Directions to the property are shared upon confirmation."
+								"text": "Kācima accepts visits by appointment only. To enquire or book, message us on WhatsApp at +91 95389 78713 or write to contractkacima@gmail.com. Directions to the property are shared upon confirmation."
 							}
 						},
 						{
@@ -222,6 +222,106 @@
 		<link href="https://fonts.googleapis.com/css2?family=Tiro+Kannada:ital@0;1&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/base.css" />
 		<link rel="stylesheet" type="text/css" href="css/form.css" />
+		<style>
+			.k-wa-flow {
+				margin-top: 2.5rem;
+				max-width: 39rem;
+			}
+			.k-wa-flow__hint {
+				font-size: 0.9rem;
+				color: rgba(var(--color-soft-cream-rgb), 0.55);
+				margin: 0 0 2rem;
+				line-height: 1.6;
+			}
+			.k-wa-flow__fields {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1.75rem 2rem;
+				margin-bottom: 2rem;
+			}
+			.k-wa-field--full { grid-column: 1 / -1; }
+			.k-wa-field__label {
+				display: block;
+				font-size: 0.72rem;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				color: rgba(var(--color-soft-cream-rgb), 0.45);
+				margin-bottom: 0.5rem;
+			}
+			.k-wa-field__label span {
+				text-transform: none;
+				letter-spacing: 0;
+				opacity: 0.6;
+			}
+			.k-wa-field__input {
+				width: 100%;
+				background: transparent;
+				border: 0;
+				border-bottom: 1px solid var(--color-border);
+				padding: 0.5rem 0;
+				font-family: inherit;
+				font-size: var(--font-size-body-mobile);
+				color: var(--color-text);
+				border-radius: 0;
+				outline: none;
+				transition: border-color 0.3s ease;
+				resize: none;
+			}
+			.k-wa-field__input::placeholder {
+				color: var(--color-text);
+				opacity: 0.35;
+			}
+			.k-wa-field__input:focus { border-bottom-color: #25d366; }
+			.k-wa-flow__btn {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.65rem;
+				padding: 0.9rem 2rem;
+				background: #25d366;
+				color: #fff;
+				border: none;
+				font-family: inherit;
+				font-size: 0.8rem;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				font-weight: 500;
+				cursor: pointer;
+				transition: background 0.25s ease, transform 0.15s ease;
+				border-radius: 2px;
+			}
+			.k-wa-flow__btn:hover { background: #1ebe5d; transform: translateY(-1px); }
+			.k-wa-flow__alt {
+				margin-top: 1.25rem;
+				font-size: 0.8rem;
+				color: rgba(var(--color-soft-cream-rgb), 0.4);
+			}
+			.k-wa-flow__alt a {
+				color: rgba(var(--color-soft-cream-rgb), 0.55);
+				text-decoration: none;
+				border-bottom: 1px solid rgba(var(--color-soft-cream-rgb), 0.2);
+				transition: color 0.2s ease;
+			}
+			.k-wa-flow__alt a:hover { color: var(--color-soft-cream); }
+			.k-community__wa-btn {
+				display: inline-flex;
+				align-items: center;
+				padding: 0 1.5rem;
+				background: #25d366;
+				color: #fff;
+				text-decoration: none;
+				font-family: inherit;
+				font-size: 0.85rem;
+				font-weight: 500;
+				white-space: nowrap;
+				border-radius: 2px;
+				transition: background 0.25s ease;
+			}
+			.k-community__wa-btn:hover { background: #1ebe5d; }
+			@media screen and (max-width: 600px) {
+				.k-wa-flow__fields { grid-template-columns: 1fr; }
+				.k-wa-field--full { grid-column: 1; }
+			}
+		</style>
 		<script>document.documentElement.className="js";</script>
 	</head>
 	<body class="loading">
@@ -244,7 +344,7 @@
 					</ul>
 				</nav>
 				<div class="k-header__cta">
-					<a href="#contact" class="k-header__cta-btn">Book Your Stay</a>
+					<a href="https://wa.me/919538978713?text=Hi%2C%20I%27d%20like%20to%20book%20a%20stay%20at%20K%C4%81cima.%20Could%20you%20share%20availability%3F" target="_blank" rel="noopener" class="k-header__cta-btn">Book Your Stay</a>
 				</div>
 				<button class="k-header__menu-btn" id="menu-toggle" aria-label="Toggle menu">
 					<span></span>
@@ -265,10 +365,10 @@
 					<li><a href="#visit">Visit</a></li>
 					<li><a href="#contact">Contact</a></li>
 				</ul>
-				<a href="#contact" class="k-header__mobile-cta">Book Your Stay</a>
+				<a href="https://wa.me/919538978713?text=Hi%2C%20I%27d%20like%20to%20book%20a%20stay%20at%20K%C4%81cima.%20Could%20you%20share%20availability%3F" target="_blank" rel="noopener" class="k-header__mobile-cta">Book Your Stay</a>
 				<div class="k-header__mobile-contact">
 					<p>Get in touch</p>
-					<a href="mailto:hello@kacima.com">hello@kacima.com</a>
+					<a href="mailto:contractkacima@gmail.com">contractkacima@gmail.com</a>
 				</div>
 			</nav>
 
@@ -667,10 +767,10 @@
 			<div class="k-community__content">
 				<h2 class="k-community__title">Join the circle</h2>
 				<p class="k-community__text">A community dedicated to mindfulness, slow living, and meaningful gathering.</p>
-				<form class="k-community__form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" aria-label="Community email signup">
-					<label class="k-visually-hidden" for="community-email">Email address</label>
-					<input type="email" id="community-email" name="email" placeholder="Your email" required>
-					<button type="submit">Join the Circle</button>
+				<form class="k-community__form" aria-label="Community WhatsApp signup">
+					<label class="k-visually-hidden" for="community-email">Your name</label>
+					<input type="text" id="community-email" name="name" placeholder="Your name">
+					<a class="k-community__wa-btn" id="community-wa-btn" href="https://wa.me/919538978713?text=Hi%2C%20I%27d%20love%20to%20join%20the%20K%C4%81cima%20community%20circle." target="_blank" rel="noopener">Join the Circle</a>
 				</form>
 				<div class="k-community__members">
 					<div class="k-community__avatars" aria-hidden="true">
@@ -794,7 +894,7 @@
 								<li>Guided nature walk</li>
 							</ul>
 							<p class="k-pricing-card__desc">A restorative stay for couples or solo travelers seeking disconnect.</p>
-							<a href="#contact" class="k-pricing-card__btn" data-package="Wellness Stay">Enquire</a>
+							<a href="https://wa.me/919538978713?text=Hi%2C%20I%27m%20interested%20in%20a%20Wellness%20Stay%20at%20K%C4%81cima.%20Could%20you%20share%20availability%20and%20details%3F" target="_blank" rel="noopener" class="k-pricing-card__btn" data-package="Wellness Stay">Enquire on WhatsApp</a>
 							<img class="k-pricing-card__art" src="img/31.webp" alt="" loading="lazy" width="120" height="90">
 						</article>
 						<article class="k-pricing-card">
@@ -812,7 +912,7 @@
 								<li>Full property access</li>
 							</ul>
 							<p class="k-pricing-card__desc">Full sanctuary buyout for private getaways, family gatherings, or small group retreats.</p>
-							<a href="#contact" class="k-pricing-card__btn" data-package="Private Buyout">Enquire</a>
+							<a href="https://wa.me/919538978713?text=Hi%2C%20I%27m%20interested%20in%20a%20Private%20Buyout%20at%20K%C4%81cima.%20Could%20you%20share%20availability%20and%20details%3F" target="_blank" rel="noopener" class="k-pricing-card__btn" data-package="Private Buyout">Enquire on WhatsApp</a>
 							<img class="k-pricing-card__art" src="img/33.webp" alt="" loading="lazy" width="120" height="90">
 						</article>
 					</div>
@@ -822,7 +922,7 @@
 					<div class="k-pricing-card__dot-br" aria-hidden="true"></div>
 					<h3 class="k-pricing-card__title">Curated Retreat Packages</h3>
 					<p class="k-pricing-card__bottom-desc">2-night Deep Rest Retreat from &#8377;32,000 per person (all-inclusive). Custom multi-day wellness packages available on request.</p>
-					<a href="#contact" class="k-pricing-card__btn" data-package="Curated Retreat">View Packages</a>
+					<a href="https://wa.me/919538978713?text=Hi%2C%20I%27m%20interested%20in%20a%20Curated%20Retreat%20at%20K%C4%81cima.%20Could%20you%20share%20package%20details%20and%20availability%3F" target="_blank" rel="noopener" class="k-pricing-card__btn" data-package="Curated Retreat">Enquire on WhatsApp</a>
 					<img class="k-pricing-card__landscape" src="img/34.webp" alt="" loading="lazy" width="360" height="240">
 				</article>
 			</div>
@@ -848,21 +948,38 @@
 			<p class="content__text">
 				<span class="sentence">Share what you&rsquo;re seeking, and we&rsquo;ll guide your time here.</span>
 				<span class="sentence">Directions are shared upon confirmation.</span>
-				<span class="sentence">Write to us.</span>
+				<span class="sentence">Message us on WhatsApp to begin.</span>
 			</p>
-			
-			<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
-					<div class="form-group">
-						<input type="text" name="name" id="name" placeholder="Your Name" required>
+
+			<div class="k-wa-flow">
+				<p class="k-wa-flow__hint">Tell us a little about your visit — we usually reply within a few hours.</p>
+
+				<div class="k-wa-flow__fields">
+					<div class="k-wa-field">
+						<label class="k-wa-field__label" for="wa-name">Your name</label>
+						<input class="k-wa-field__input" type="text" id="wa-name" placeholder="e.g. Priya">
 					</div>
-					<div class="form-group">
-						<input type="email" name="email" id="email" placeholder="Your Email" required>
+					<div class="k-wa-field">
+						<label class="k-wa-field__label" for="wa-dates">Preferred dates</label>
+						<input class="k-wa-field__input" type="text" id="wa-dates" placeholder="e.g. 5–7 Aug 2025">
 					</div>
-					<div class="form-group">
-						<textarea name="message" id="message" rows="1" placeholder="Your Enquiry" required></textarea>
+					<div class="k-wa-field">
+						<label class="k-wa-field__label" for="wa-guests">Number of guests</label>
+						<input class="k-wa-field__input" type="text" id="wa-guests" placeholder="e.g. 2">
 					</div>
-					<button type="submit" class="type-tiny unbutton form-submit">Send Request</button>
-				</form>
+					<div class="k-wa-field k-wa-field--full">
+						<label class="k-wa-field__label" for="wa-note">What are you seeking? <span>(optional)</span></label>
+						<textarea class="k-wa-field__input" id="wa-note" rows="2" placeholder="Rest, yoga, a retreat, a private gathering…"></textarea>
+					</div>
+				</div>
+
+				<button class="k-wa-flow__btn" id="wa-send-btn" type="button">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+					Message us on WhatsApp
+				</button>
+
+				<p class="k-wa-flow__alt">Prefer email? Write to <a href="mailto:contractkacima@gmail.com">contractkacima@gmail.com</a></p>
+			</div>
 			</section>
 			<!-- Custom Footer -->
 			<footer class="k-footer">
@@ -896,7 +1013,7 @@
 					<div class="k-footer__links k-footer__contact">
 						<h4>Connect</h4>
 						<p>Kanakapura Road<br>Bangalore, Karnataka</p>
-						<p><a href="mailto:hello@kacima.com">hello@kacima.com</a></p>
+						<p><a href="mailto:contractkacima@gmail.com">contractkacima@gmail.com</a></p>
 						<div class="k-footer__social">
 							<a href="#" aria-label="Instagram" title="Instagram">
 								<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
@@ -909,11 +1026,11 @@
 				</div>
 				<div class="k-footer__bottom">
 					<div class="k-footer__legal">
-						<a href="#">Privacy Policy</a>
-						<a href="#">Terms of Service</a>
-						<a href="#">Cancellation Policy</a>
-						<a href="#">Cookie Policy</a>
-						<a href="#">Accessibility</a>
+					<a href="privacy.html">Privacy Policy</a>
+					<a href="terms.html">Terms of Service</a>
+					<a href="cancellation.html">Cancellation Policy</a>
+					<a href="cookies.html">Cookie Policy</a>
+					<a href="accessibility.html">Accessibility</a>
 					</div>
 					<div class="k-footer__copyright">
 						&copy; 2026 <a href="#">Kācima</a>. All rights reserved. Crafted with intention.
@@ -936,5 +1053,37 @@
 
 		<!-- Scripts for the effect -->
 		<script type="module" src="js/index.js"></script>
+		<script>
+			(function () {
+				var WA_NUMBER = '919538978713';
+				var btn = document.getElementById('wa-send-btn');
+				if (!btn) return;
+				btn.addEventListener('click', function () {
+					var name = (document.getElementById('wa-name').value || '').trim();
+					var dates = (document.getElementById('wa-dates').value || '').trim();
+					var guests = (document.getElementById('wa-guests').value || '').trim();
+					var note = (document.getElementById('wa-note').value || '').trim();
+					var lines = ['Hi, I\u2019d like to enquire about a stay at K\u0101cima.'];
+					if (name) lines.push('My name is ' + name + '.');
+					if (dates) lines.push('Preferred dates: ' + dates + '.');
+					if (guests) lines.push('Number of guests: ' + guests + '.');
+					if (note) lines.push('What I\u2019m seeking: ' + note);
+					var msg = encodeURIComponent(lines.join('\n'));
+					window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank', 'noopener');
+				});
+
+				var communityBtn = document.getElementById('community-wa-btn');
+				var communityInput = document.getElementById('community-email');
+				if (communityBtn && communityInput) {
+					communityBtn.addEventListener('click', function (e) {
+						var nameVal = (communityInput.value || '').trim();
+						if (nameVal) {
+							var msg = encodeURIComponent('Hi, I\u2019m ' + nameVal + ' and I\u2019d love to join the K\u0101cima community circle.');
+							communityBtn.href = 'https://wa.me/' + WA_NUMBER + '?text=' + msg;
+						}
+					});
+				}
+			})();
+		</script>
   </body>
 </html>
