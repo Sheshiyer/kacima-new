@@ -6,8 +6,8 @@
 
 :root {
 	/* Typography Scale */
-	--font-size-body: 1.125rem; /* 18px desktop */
-	--font-size-body-mobile: 1rem; /* 16px mobile */
+	--font-size-body: 0.9375rem; /* 15px desktop */
+	--font-size-body-mobile: 0.875rem; /* 14px mobile */
 	--font-display: "Tiro Kannada", Georgia, "Times New Roman", serif;
 
 	/* Spacing Scale */
@@ -1001,6 +1001,77 @@ a:focus-visible {
 	pointer-events: none;
 	will-change: transform;
 	transform: translateZ(0.1px);
+}
+
+/* Sanctuary gallery — one clear mobile image, an editorial mosaic on larger screens */
+.k-sanctuary-gallery {
+	display: grid;
+	width: 100%;
+	min-height: min(76vw, 34rem);
+	grid-template-columns: 1fr;
+	border-radius: 1.25rem;
+	overflow: hidden;
+}
+
+.k-sanctuary-gallery__image {
+	display: none;
+	min-height: min(76vw, 34rem);
+	background: center / cover no-repeat;
+}
+
+.k-sanctuary-gallery__image--primary {
+	display: block;
+	background-position: center 52%;
+}
+
+@media screen and (min-width: 768px) {
+	.k-sanctuary-gallery {
+		min-height: 42rem;
+		grid-template-columns: repeat(6, 1fr);
+		grid-template-rows: repeat(4, 1fr);
+		gap: var(--grid-gap);
+		border-radius: 1.5rem;
+		overflow: visible;
+	}
+
+	.k-sanctuary-gallery__image {
+		display: block;
+		min-height: 0;
+		border-radius: 0.75rem;
+	}
+
+	.k-sanctuary-gallery__image--primary { grid-area: 1 / 1 / 4 / 4; }
+	.k-sanctuary-gallery__image--entrance { grid-area: 1 / 4 / 2 / 6; }
+	.k-sanctuary-gallery__image--facade { grid-area: 1 / 6 / 3 / 7; }
+	.k-sanctuary-gallery__image--garden { grid-area: 2 / 4 / 4 / 6; }
+	.k-sanctuary-gallery__image--living { grid-area: 3 / 6 / 5 / 7; }
+	.k-sanctuary-gallery__image--dining { grid-area: 4 / 1 / 5 / 3; }
+	.k-sanctuary-gallery__image--practice { grid-area: 4 / 3 / 5 / 5; }
+	.k-sanctuary-gallery__image--interior,
+	.k-sanctuary-gallery__image--detail,
+	.k-sanctuary-gallery__image--terrace,
+	.k-sanctuary-gallery__image--grove { display: none; }
+}
+
+@media screen and (min-width: 1024px) {
+	.k-sanctuary-gallery {
+		min-height: 48rem;
+		grid-template-columns: repeat(12, 1fr);
+		grid-template-rows: repeat(6, 1fr);
+	}
+
+	.k-sanctuary-gallery__image { display: block; }
+	.k-sanctuary-gallery__image--primary { grid-area: 1 / 1 / 5 / 6; }
+	.k-sanctuary-gallery__image--entrance { grid-area: 1 / 6 / 3 / 9; }
+	.k-sanctuary-gallery__image--facade { grid-area: 1 / 9 / 4 / 13; }
+	.k-sanctuary-gallery__image--garden { grid-area: 3 / 6 / 5 / 9; }
+	.k-sanctuary-gallery__image--living { grid-area: 4 / 9 / 7 / 13; }
+	.k-sanctuary-gallery__image--dining { grid-area: 5 / 1 / 7 / 4; }
+	.k-sanctuary-gallery__image--practice { grid-area: 5 / 4 / 7 / 7; }
+	.k-sanctuary-gallery__image--interior { grid-area: 5 / 7 / 7 / 9; }
+	.k-sanctuary-gallery__image--detail,
+	.k-sanctuary-gallery__image--terrace,
+	.k-sanctuary-gallery__image--grove { display: none; }
 }
 
 .grid--columns .grid__img {
